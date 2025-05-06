@@ -11,3 +11,8 @@ export async function loginHandle({ email, password }) {
 
   return data;
 }
+
+export async function registerHandle(user) {
+  const { data } = await axios.post(`${API_HOST}/register`, user);
+  return data;
+}
