@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.scss";
+import "./index.module.scss";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";

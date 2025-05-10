@@ -7,12 +7,19 @@ export async function loginHandle({ email, password }) {
     email,
     password,
   });
-  const data = response.data;
-
-  return data;
+  return response.data;
 }
 
 export async function registerHandle(user) {
-  const { data } = await axios.post(`${API_HOST}/register`, user);
-  return data;
+  const response = await axios.post(`${API_HOST}/register`, user);
+  return response.data;
+}
+
+export async function getCurrentUser(token) {
+  const response = await axios.get(`${API_HOST}/user`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
 }

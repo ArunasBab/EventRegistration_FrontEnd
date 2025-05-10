@@ -27,7 +27,7 @@ export default function RegisterPage() {
 
   async function submitHandle(e) {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     try {
       await registerUserSchema.validate(formData);
       await registerHandle(formData);
@@ -43,7 +43,7 @@ export default function RegisterPage() {
 
   return (
     <form onSubmit={submitHandle}>
-      <label htmlFor="name-input">Name</label>
+      <label htmlFor="name-input">Vardas </label>
       <input
         type="text"
         id="name-input"
@@ -52,7 +52,7 @@ export default function RegisterPage() {
         onChange={inputChangeHandle}
       ></input>{" "}
       <br />
-      <label htmlFor="last-name-input">Last name</label>
+      <label htmlFor="last-name-input">Pavardė </label>
       <input
         type="text"
         id="last-name-input"
@@ -61,7 +61,7 @@ export default function RegisterPage() {
         onChange={inputChangeHandle}
       ></input>{" "}
       <br />
-      <label htmlFor="email-input">Email</label>
+      <label htmlFor="email-input">El. paštas </label>
       <input
         type="email"
         id="email-input"
@@ -70,7 +70,7 @@ export default function RegisterPage() {
         onChange={inputChangeHandle}
       ></input>{" "}
       <br />
-      <label htmlFor="password-input">Password</label>
+      <label htmlFor="password-input">Slaptažodis </label>
       <input
         type="password"
         id="password-input"
@@ -79,7 +79,7 @@ export default function RegisterPage() {
         onChange={inputChangeHandle}
       ></input>{" "}
       <br />
-      <button type="submit">Submit</button>
+      <button type="submit">Registruoti </button>
     </form>
   );
 }

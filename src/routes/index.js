@@ -4,4 +4,5 @@ export const routes = {
   notFound: () => "*",
   home: () => "/",
   logout: () => "/logout",
+  loginRegistration: () => "/personRegister",
 };
