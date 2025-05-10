@@ -22,7 +22,7 @@ export default function LoginPage() {
       const { token } = await loginHandle({ email, password });
       setCookies("token", token);
       setIsAuthenticated(true);
-      navigate(routes.home());
+      navigate(routes.loginRegistration());
     } catch (error) {
       if (error instanceof AxiosError) {
         setError(error.response?.data.error);
@@ -33,7 +33,7 @@ export default function LoginPage() {
   return (
     <div>
       <form onSubmit={submitHandle}>
-        <label htmlFor="input-email">Email</label>
+        <label htmlFor="input-email">El.Paštas</label>
         <input
           type="email"
           id="input-email"
@@ -41,7 +41,7 @@ export default function LoginPage() {
           onChange={(e) => setEmail(e.target.value)}
         ></input>{" "}
         <br />
-        <label htmlFor="input-password">Password</label>
+        <label htmlFor="input-password">Slaptažodis</label>
         <input
           type="password"
           id="input-password"
@@ -49,7 +49,7 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         ></input>{" "}
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit">Prisijungti</button>
       </form>
       {error && <p>{error}</p>}
     </div>

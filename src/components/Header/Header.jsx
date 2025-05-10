@@ -27,13 +27,15 @@ export default function Header() {
       <div>
         {!isAuthenticated ? (
           <>
-            <button onClick={() => navigate(routes.login())}>Login</button>
+            <button onClick={() => navigate(routes.login())}>
+              Prisijungti
+            </button>
             <button onClick={() => navigate(routes.register())}>
-              Register
+              Registruoti
             </button>
           </>
         ) : (
-          <button onClick={logOutHandler}>Logout</button>
+          <button onClick={logOutHandler}>Atsijungti</button>
         )}
       </div>
     </div>
