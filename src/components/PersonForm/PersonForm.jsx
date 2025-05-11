@@ -41,7 +41,7 @@ const PersonForm = () => {
           const updatedPerson = await sendRequest(() =>
             api.updatePerson(state.editingPerson._id, values, token)
           );
-          setModalMessage("Asmuo sėkmingai atnaujintas!");
+          setModalMessage("Vartotojas sėkmingai atnaujintas!");
           dispatch({
             type: "UPDATE_PERSON_IN_LIST",
             payload: updatedPerson,
@@ -50,7 +50,7 @@ const PersonForm = () => {
           const newPerson = await sendRequest(() =>
             api.createPerson(values, token)
           );
-          setModalMessage("Asmuo sėkmingai užregistruotas!");
+          setModalMessage("Vartotojas sėkmingai užregistruotas!");
           dispatch({
             type: "ADD_PERSON_TO_LIST",
             payload: newPerson,
@@ -100,10 +100,10 @@ const PersonForm = () => {
             onBlur={formik.handleBlur}
             value={formik.values.fullName}
           />
-          {formik.touched.fullName && formik.errors.fullName ? (
-            <div className={styles.error}>{formik.errors.fullName}</div>
-          ) : null}
         </div>
+        {formik.touched.fullName && formik.errors.fullName ? (
+          <div className={styles.error}>{formik.errors.fullName}</div>
+        ) : null}
 
         <div className={styles.formGroup}>
           <label htmlFor="email">El. paštas</label>
@@ -115,10 +115,10 @@ const PersonForm = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          {formik.touched.email && formik.errors.email ? (
-            <div className={styles.error}>{formik.errors.email}</div>
-          ) : null}
         </div>
+        {formik.touched.email && formik.errors.email ? (
+          <div className={styles.error}>{formik.errors.email}</div>
+        ) : null}
 
         <div className={styles.formGroup}>
           <label htmlFor="age">Amžius</label>
@@ -130,10 +130,10 @@ const PersonForm = () => {
             onBlur={formik.handleBlur}
             value={formik.values.age}
           />
-          {formik.touched.age && formik.errors.age ? (
-            <div className={styles.error}>{formik.errors.age}</div>
-          ) : null}
         </div>
+        {formik.touched.age && formik.errors.age ? (
+          <div className={styles.error}>{formik.errors.age}</div>
+        ) : null}
 
         <div className={styles.buttons}>
           <Button type="submit">

@@ -1,0 +1,15 @@
+@use "../../variables.scss" as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  background-color: $beige2;
+  border-radius: 5px;
+}

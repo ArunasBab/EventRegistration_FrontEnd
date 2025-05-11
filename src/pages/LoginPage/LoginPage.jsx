@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { loginHandle } from "../../api/auth";
+import { loginHandle } from "../../api/authApi";
 import { AxiosError } from "axios";
 import { useAuth } from "../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes";
+import Button from "../../components/UI/Button";
+import styles from "./LoginRegisterPage.module.scss";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cookies, setCookies] = useCookies(["token"]);
+  const [, setCookies] = useCookies(["token"]);
   const [error, setError] = useState("");
 
   const { setIsAuthenticated } = useAuth();
@@ -17,6 +19,7 @@ export default function LoginPage() {
 
   const submitHandle = async (e) => {
     e.preventDefault();
+    setError(null);
 
     try {
       const { token } = await loginHandle({ email, password });
@@ -31,27 +34,34 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandle}>
-        <label htmlFor="input-email">El.Paštas</label>
-        <input
-          type="email"
-          id="input-email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>{" "}
-        <br />
-        <label htmlFor="input-password">Slaptažodis</label>
-        <input
-          type="password"
-          id="input-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>{" "}
-        <br />
-        <button type="submit">Prisijungti</button>
-      </form>
-      {error && <p>{error}</p>}
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <form onSubmit={submitHandle}>
+          <div>
+            <label htmlFor="input-email">El.Paštas</label>
+            <input
+              type="email"
+              id="input-email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </div>
+
+          <div>
+            <label htmlFor="input-password">Slaptažodis</label>
+            <input
+              type="password"
+              id="input-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </div>
+          {error && <p className={styles.paragraph}>{error}</p>}
+          <div className={styles.button}>
+            <Button type="submit">Prisijungti</Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

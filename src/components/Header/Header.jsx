@@ -3,9 +3,11 @@ import { routes } from "../../routes";
 import { useAuth } from "../../providers/AuthProvider";
 import { useCookies } from "react-cookie";
 import { useEffect } from "react";
+import styles from "./Header.module.scss";
+import Button from "../UI/Button";
 
 export default function Header() {
-  const [cookies, setCookies, removeCookie] = useCookies(["token"]);
+  const [cookies, _, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
 
   const { isAuthenticated, setIsAuthenticated } = useAuth();
@@ -23,19 +25,21 @@ export default function Header() {
   }, [cookies, setIsAuthenticated]);
 
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <img src="../src/assets/logo.png" alt="Logo" />
+      <h1>Renginiai "Lemūras"</h1>
+      <div className={styles.box}>
         {!isAuthenticated ? (
           <>
-            <button onClick={() => navigate(routes.login())}>
+            <Button onClick={() => navigate(routes.login())}>
               Prisijungti
-            </button>
-            <button onClick={() => navigate(routes.register())}>
+            </Button>
+            <Button onClick={() => navigate(routes.register())}>
               Registruoti
-            </button>
+            </Button>
           </>
         ) : (
-          <button onClick={logOutHandler}>Atsijungti</button>
+          <Button onClick={logOutHandler}>Atsijungti</Button>
         )}
       </div>
     </div>
