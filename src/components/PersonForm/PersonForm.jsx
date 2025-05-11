@@ -35,6 +35,7 @@ const PersonForm = () => {
         .required("Privalomas laukas")
         .integer("Amžius turi būti sveikas skaičius"),
     }),
+
     onSubmit: async (values) => {
       try {
         if (state.editingPerson) {
@@ -77,7 +78,7 @@ const PersonForm = () => {
     } else {
       formik.resetForm();
     }
-  }, [state.editingPerson]);
+  });
 
   const handleCancel = () => {
     formik.resetForm();
